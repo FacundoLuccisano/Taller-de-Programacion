@@ -1,14 +1,23 @@
-Programación Orientada a Objetos
-Este directorio contiene ejercicios, trabajos prácticos y evaluaciones realizadas en el marco de la materia Taller de Programación de la Licenciatura en Sistemas – Universidad Nacional de La Plata.
+# Programación Orientada a Objetos
 
-El objetivo es aplicar los conceptos fundamentales de la *Programación Orientada a Objetos*, haciendo foco en el diseño, la modularidad y la reutilización del código.
+Este directorio contiene ejercicios, trabajos prácticos y evaluaciones realizadas en el marco de la materia **Taller de Programación**
+de la Licenciatura en Sistemas – Universidad Nacional de La Plata.
 
-*Contenidos principales*
--Lenguaje: Java
--Clases y objetos
--Encapsulamiento
--Constructores
--Métodos y atributos
--Relaciones entre clases
--Manejo básico de colecciones
--Resolución de problemas mediante modelos orientados a objetos
+El objetivo es aplicar los conceptos fundamentales de la **Programación Orientada a Objetos**, haciendo foco en el diseño,
+la modularidad y la reutilización del código.
+
+## Contenidos principales
+
+- Lenguaje: **Java**
+- Clases y objetos
+- Encapsulamiento
+- Constructores
+- Métodos y atributos
+- Relaciones entre clases
+- Manejo básico de colecciones
+- Resolución de problemas mediante modelos orientados a objetos
+
+## Notas
+
+Los ejercicios reflejan un proceso de aprendizaje académico, priorizando la comprensión de los conceptos y
+las buenas prácticas de programación.
