@@ -1,0 +1,88 @@
+{Dos robots recolectores avanzan por las calles 3 y 4 respectivamente juntando todas las
+flores a su paso. Cada esquina tiene a lo sumo una flor. Cada vez que juntan 10 flores o que
+avanzan 15 esquinas, deberán vaciar de flores su bolsa en el depósito localizado en la
+esquina (10,10).
+Cada vez que se depositan flores en el depósito, un robot cosechador deberá juntar dichas
+flores.
+Cuando ambos recolectores hayan completado sus calles, el robot cosechador deberá
+informar la cantidad de flores recolectadas.
+Los recolectores inician en la esquina (1,3) y (1,4), y el cosechador en la esquina (1,5)}
+
+programa ejercicio3
+procesos 
+  proceso moverYjuntar (ES pasos: numero; ES flores: numero)
+  variables 
+    avActual, caActual: numero
+  comenzar 
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+      flores := flores + 1
+    pasos := pasos + 1
+    si ( (flores = 10) | ((pasos = 15) & (flores > 0)) )
+      avActual := PosAv
+      caActual := PosCa
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      mientras (HayFlorEnLaBolsa)
+        depositarFlor
+      EnviarMensaje (V, rc)
+      flores := 0
+      pasos := 0
+      Pos(avActual, caActual)
+      LiberarEsquina(10,10)
+  fin
+areas
+  arear1: AreaP (1,3,100,3)
+  arear2: AreaP (1,4,100,4)
+  areaC: AreaP (1,5,1,5)
+  deposito: AreaC (10,10,10,10)
+robots
+  robot recolectores
+  variables 
+    flores, pasos: numero
+  comenzar
+    pasos := 0
+    flores := 0
+    derecha
+    repetir 99
+      moverYjuntar(pasos, flores)
+      mover
+    moverYjuntar (pasos, flores)
+    EnviarMensaje (F, rc)
+  fin
+  robot cosechador 
+  variables 
+    hayFlor: boolean
+    terminaron, cantJuntadas: numero
+  comenzar 
+    terminaron:=0
+    cantJuntadas:=0
+    mientras (terminaron < 2)
+      RecibirMensaje (hayFlor,*)
+      si (hayFlor)
+        BloquearEsquina (10,10)
+        Pos (10,10)
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+          cantJuntadas:= cantJuntadas+1
+        Pos (1,5)
+        LiberarEsquina (10,10)
+      sino
+        terminaron:= terminaron+1
+    Informar ('Junte', cantJuntadas)
+  fin
+variables
+  r1, r2: recolectores
+  rc: cosechador
+comenzar
+  AsignarArea(r1, arear1)
+  AsignarArea(r1, deposito)
+  AsignarArea(r2, arear2)
+  AsignarArea(r2, deposito)
+  AsignarArea(rc, areaC)
+  AsignarArea(rc, deposito)
+  Iniciar(r1, 1,3)
+  Iniciar(r2, 1,4)
+  Iniciar(rc, 1,5)
+fin
+
